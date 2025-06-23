@@ -15,9 +15,9 @@ A beautiful, responsive Tic Tac Toe game built using React. Play as X or O, swit
 
 ---
 
-## 📸 Preview
+## 📸 Game Preview
 
-![Game Screenshot](./preview.png) <!-- Optional: Replace with actual screenshot path -->
+![Tic Tac Toe](https://github.com/arrysoni/tic-tac-toe/blob/main/src/images/Screenshot%202025-06-23%20at%2012.59.00%E2%80%AFPM.png) <!-- Optional: Replace with actual screenshot path -->
 
 ---
 
