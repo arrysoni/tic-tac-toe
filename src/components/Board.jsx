@@ -6,22 +6,23 @@ function Board() {
   const [xIsNext, setXIsNext] = useState(true);
 
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) return;   
+    if (squares[i] || calculateWinner(squares)) return;   // Ignore the click if the square is filled and when the winner is already declared
 
-    const nextSquares = [...squares];
+    const nextSquares = [...squares];                     // Create a copy of the board
     nextSquares[i] = xIsNext ? 'X' : 'O';
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
   }
-
+    
+  // Function to calculate the winner
   function calculateWinner(squares) {
-    const lines = [
+    const lines = [                     // All possible combinations of a winner
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
       [0, 3, 6], [1, 4, 7], [2, 5, 8],
       [0, 4, 8], [2, 4, 6]
     ];
 
-    for (let [a, b, c] of lines) {
+    for (let [a, b, c] of lines) {    // Here, [a,b,c] represents the positions in the matrix square
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
@@ -32,6 +33,8 @@ function Board() {
   const winner = calculateWinner(squares);
   const isTie = !winner && squares.every(square => square !== null);
 
+
+  // Displaying the status
   let status;
   if (winner) {
     status = `🎉 Winner: ${winner}`;
@@ -41,6 +44,8 @@ function Board() {
     status = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }
 
+
+  // Resetting the game
   function resetGame() {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
@@ -69,4 +74,13 @@ function Board() {
   );
 }
 
+/*
+It’s like saying:
+
+For each index i in [0, 1, 2], create a <Square> component, and tell it:
+What to display (X/O/empty)
+
+What to do when clicked (mark this square)
+
+*/
 export default Board;
